@@ -36,14 +36,26 @@ public class ImcBeam {
 	
 	
 	public String getResult() {
-		Float result = peso / (altura*2);
-		if(result.isNaN()) {
+		Float imc = peso / (altura*2);
+		if(imc.isNaN()) 
 			return "Falhou";
-		}
-		return new DecimalFormat("#.##").format(result);
-
-		
 			
+		StringBuilder result = new StringBuilder("Seu imc = "+ new DecimalFormat("#.#").format(imc));
+		
+		if(imc >= 18.5 & imc <=24.9 )
+			result.append(" Categoria de peso Normal");
+		if(imc >= 25 & imc <=29.9 )
+			result.append(" Categoria de peso SobrePeso");
+		if(imc >= 30 & imc <=34.9 )
+			result.append(" Categoria de peso Obeso Classe 1");
+		if(imc >= 35 & imc <=39.9 )
+			result.append(" Categoria de peso Obeso Classe 2");
+		if(imc >= 40)
+			result.append(" Categoria de peso Obeso Classe 3");
+		
+		return result.toString();
+
+				
 	}
 	@Override
 	public String toString() {
