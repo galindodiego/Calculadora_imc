@@ -11,11 +11,14 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import com.calculadora_imc.control.ImcController;
+
 public class MainViewer {
 
 	private JFrame appFrame;
 	private JTextField pesotextField;
 	private JTextField alturatextField;
+	private  JTextPane resultPane;
 
 	/**
 	 * Launch the application.
@@ -82,12 +85,47 @@ public class MainViewer {
 		
 		JButton calcularButton = new JButton("CALCULAR");
 		calcularButton.setBounds(20, 151, 227, 38);
+		calcularButton.addActionListener(new ImcController(this));
 		appFrame.getContentPane().add(calcularButton);
 		
-		JTextPane resultPane = new JTextPane();
+		resultPane = new JTextPane();
 		resultPane.setBorder(new EmptyBorder(8, 8, 8, 8));
 		resultPane.setText("Resultado");
 		resultPane.setBounds(19, 200, 228, 88);
 		appFrame.getContentPane().add(resultPane);
 	}
+
+	public JFrame getAppFrame() {
+		return appFrame;
+	}
+
+	public void setAppFrame(JFrame appFrame) {
+		this.appFrame = appFrame;
+	}
+
+	public JTextField getPesotextField() {
+		return pesotextField;
+	}
+
+	public void setPesotextField(JTextField pesotextField) {
+		this.pesotextField = pesotextField;
+	}
+
+	public JTextField getAlturatextField() {
+		return alturatextField;
+	}
+
+	public void setAlturatextField(JTextField alturatextField) {
+		this.alturatextField = alturatextField;
+	}
+
+	public JTextPane getResultPane() {
+		return resultPane;
+	}
+
+	public void setResultPane(JTextPane resultPane) {
+		this.resultPane = resultPane;
+	}
+	
+	
 }
